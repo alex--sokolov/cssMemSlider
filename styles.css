@@ -21,7 +21,7 @@
 
 
 html {
-    background: #ddd;
+    background: #999;
 }
 body {
     font-family: Forum;
@@ -117,25 +117,36 @@ a:hover{
     display: flex;
     justify-content: space-between;
     width: 300px;
-    height: 40px;
+    height: 100%;
+    align-items: center;
 }
 
 .bullet {
     position: relative;
     height: 50px;
     width: 50px;
-    border: 10px solid #ccc;
+    border: 8px solid #fff;
+    outline: 2px solid #0091EA;
     border-radius: 50%;
     cursor: pointer;
-    transform: translate(0, -5%);
     transform: scale(0.7);
-    background: #fff;
     transition: var(--trans);
+}
+.bullet:before {
+    content: "";
+    border: 20px solid transparent;
+    width: 40px;
+    height: 40px;
+    left: -25px;
+    top:-20px;
+    position: fixed;
 }
 
 .bullet:hover {
-    background:  #0091EA;
+    background:  goldenrod;
 }
+
+
 
 #slide-1:checked ~ .controls > .bullets > label:nth-of-type(1),
 #slide-2:checked ~ .controls > .bullets > label:nth-of-type(2),
@@ -144,6 +155,7 @@ a:hover{
 {
     background: #0091EA;
     transform: scale(1);
+    cursor: default;
 }
 
 #slide-1:checked ~ .slides > .slides-container > .slide1{
@@ -195,26 +207,34 @@ a:hover{
         margin-left: 0;
     }
 }
-
+.text::after{
+    background: #fff;
+    border-radius: 50%;
+    padding: 15px;
+    font-weight: bold;
+}
 #slide-1:checked ~ .controls > .text::after{
     content: "Without JavaScript";
     animation: show1 var(--trans);
-
+    color: red;
 }
 
 #slide-2:checked ~ .controls > .text::after{
     content: "Without Sass";
     animation: show2 var(--trans);
+    color: red;
+
 }
 #slide-3:checked ~ .controls > .text::after{
     content: "Without absolute position";
     animation: show3 var(--trans);
+    color: red;
 }
 #slide-4:checked ~ .controls > .text::after{
     content: "Take that cookie";
     animation: show4 var(--trans);
+    color: darkgreen;
 }
-
 
 
 
@@ -230,10 +250,35 @@ a:hover{
 }
 
 .footer__rights {
+    color: white;
+    font-style: italic;
 }
 
-.rs {
+.rs a{
+    color: goldenrod;
+    font-weight: bold;
 }
 
-.github {
+.github a{
+    color:#0091EA;
+    font-weight: bold;
+}
+
+@media (max-width: 768px){
+    .controls{
+        height: 150px;
+        flex-direction: column-reverse;
+        padding-bottom: 20px;
+    }
+    .slides{
+        max-height: 350px;
+    }
+    h1{
+        font-size: 24px;
+    }
+    .footer{
+        font-size: 18px;
+        flex-wrap: wrap;
+        gap:20px;
+    }
 }
